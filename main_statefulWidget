@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+
+void main () {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp ({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: WidgetCounter(),
+    );
+  }
+}
+
+class WidgetCounter extends StatefulWidget {
+  const WidgetCounter ({super.key});
+
+  @override
+  _WidgetCounterState createState() => _WidgetCounterState();
+}
+
+class _WidgetCounterState extends State<WidgetCounter> {
+  int hitungan = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        onPressed: (){
+          setState((){
+            hitungan++;
+          });
+        },
+        child: Text('Tombol ini sudah di pencet $hitungan kali.'),
+      ),
+    );
+  }
+}
+
+/* 
+Pada bagian ini adalah file main yang menggunakan stateful widget
+atau bersifat dinamis dan dapat di ubah ubah (diperbarui kapan saja), 
+contohnya seperti keranjang belanja.
+
+*/
+
