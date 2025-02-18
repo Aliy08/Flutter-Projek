@@ -1,63 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/Scaffold.dart';
 
-void main() {
-  runApp(MyApp());
+void main () {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp ({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Modul Material App',
-      theme: ThemeData(primarySwatch: Colors.purple),
-      darkTheme: ThemeData(primarySwatch: Colors.green),
-      themeMode: ThemeMode.dark,
-      color: Colors.amberAccent,
-      debugShowCheckedModeBanner: false,
-      home: CobaScaffold(),
+    return const MaterialApp(
+      home: HomePage(),
     );
   }
 }
 
-class Counter extends StatefulWidget {
-  @override
-  _CounterState createState() => _CounterState();
-}
-
-class _CounterState extends State<Counter> {
-  int _counter = 0;
+class HomePage extends StatelessWidget {
+  const HomePage ({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var elevatedButton = ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Theme.of(context).primaryColor,
-        foregroundColor: Colors.white,
-      ),
-      onPressed: () {
-        setState(() {
-          _counter++;
-        });
-      },
-      child: Text('Tambah'),
-    );
-
     return Scaffold(
-      appBar: AppBar(title: Text("Counter App")),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              '$_counter',
-              style: TextStyle(fontSize: 40),
-            ),
-            SizedBox(height: 20),
-            elevatedButton,  
-          ],
-        ),
+      appBar: AppBar(
+        title: const Text ('Home Page'),
+        backgroundColor: Colors.amber,
       ),
-    );
+      body: const Center(
+        child: Text('Hello ini adalah stateles widget'),
+      ),
+      );
   }
 }
+
+// Berikut ini adalah contoh penggunakan stateles widget 
+// yang tidak dapat di ubah seperti berbentuk text,
+// gambar dll.
