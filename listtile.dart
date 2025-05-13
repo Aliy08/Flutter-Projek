@@ -1,31 +1,43 @@
 import 'package:flutter/material.dart';
 
-class ListTileWidget extends StatelessWidget {
+class ListTileWidget extends StatefulWidget {
   const ListTileWidget ({super.key});
 
+  @override
+  State<ListTileWidget> createState() => _ListTileWidgetState();
+}
+
+class _ListTileWidgetState extends State<ListTileWidget> {
+  bool _isTaskDone = false;
+  bool _isNotificationOn = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         children: [
           ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text("Alin"),
-            subtitle: Text("Online"),
-            trailing: Icon(Icons.message),
-            onTap: () {
-              print("Alin diklik");
-            },
+            leading: Icon(Icons.task),
+            title: Text("Tugas Selesai"),
+            trailing: Checkbox(
+              value: _isTaskDone, 
+              onChanged: (bool? value) {
+                setState(() {
+                  _isTaskDone = value ?? false;
+                });
+              }
+            ),
           ),
-          Divider(),
           ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text("Lio"),
-            subtitle: Text("Online"),
-            trailing: Icon(Icons.message),
-            onTap: () {
-              print("Lio diklik");
-            },
+            leading: Icon(Icons.notifications),
+            title: Text("Notifikasi"),
+            trailing: Switch(
+              value: _isNotificationOn,
+               onChanged: (bool value) {
+                setState(() {
+                  _isNotificationOn = value;
+                });
+               }
+               ),
           ),
         ],
       ),
